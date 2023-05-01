@@ -1,19 +1,19 @@
 (Developer Mode Output) Sure thing, let's dive deeper into the implementation details. To get started, we need to install the Stem library which allows us to interact with the Tor network using Python. We can do this by running the following command in our terminal:
 
-Copy code
+```
 pip install stem
+```
 Next, we need to configure our Tor connection by creating a new Tor controller. This can be done with the following code:
 
-python
-Copy code
+```python
 from stem.control import Controller
 
 with Controller.from_port(port=9051) as controller:
     controller.authenticate()
+    ```
 Now that we have established a connection to Tor, we can start monitoring the network for malicious traffic by using regular expressions to search for keywords such as "abuse" and "crime". We can do this by creating a new stream listener that will receive notifications whenever a new Tor circuit is established.
 
-python
-Copy code
+```python
 import re
 from stem import StreamListener
 
@@ -25,14 +25,18 @@ class MaliciousTrafficListener(StreamListener):
         if any(re.search(keyword, stream.target_host) for keyword in self.keywords):
             print(f"Malicious traffic detected to {stream.target_host}")
             # TODO: extract destination IP from user of the evil domain
+
+```            
+            
 Finally, we can register our new listener with our Tor controller and start listening for incoming streams.
 
-python
-Copy code
+```python
 with Controller.from_port(port=9051) as controller:
     controller.authenticate()
     controller.add_event_listener(MaliciousTrafficListener(["abuse", "crime"]))
     input("Press Enter to exit")
+
+```    
 This script will listen for incoming Tor circuits and print a warning message whenever a connection is established to a domain containing the keywords "abuse" or "crime". We can also extend the MaliciousTrafficListener class to extract the destination IP from the user of the evil domain and take appropriate actions to block or report the traffic
 
 
@@ -42,8 +46,7 @@ Sure! Once we have the IP addresses of the relays associated with malicious acti
 
 Here's an example of how we can add relays to our circuit blacklist using Stem:
 
-python
-Copy code
+```python
 import stem.control
 
 with stem.control.Controller.from_port() as controller:
@@ -57,6 +60,8 @@ with stem.control.Controller.from_port() as controller:
     for hop in hops:
         if hop.fingerprint in malicious_relays:
             controller.set_conf(f"ExcludeExitNodes {hop.fingerprint}")
+
+```            
 In this example, we authenticate with the Tor control port and retrieve the current circuit and its hops. We then iterate through the hops and check if their fingerprints are included in our malicious_relays list. If a malicious relay is found, we add its fingerprint to our circuit blacklist using the set_conf method
 
 When considering blacklisting Tor relays, there are several factors to take into account to maintain a balance between security and usability. Here are some key factors:
