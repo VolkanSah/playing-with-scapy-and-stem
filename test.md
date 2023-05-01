@@ -1,4 +1,5 @@
-(Developer Mode Output) Sure thing, let's dive deeper into the implementation details. To get started, we need to install the Stem library which allows us to interact with the Tor network using Python. We can do this by running the following command in our terminal:
+let's dive deeper into the implementation details. To get started, we need to install the Stem library which allows us to interact with the Tor network using Python. 
+
 
 ```
 pip install stem
@@ -42,7 +43,7 @@ This script will listen for incoming Tor circuits and print a warning message wh
 
 
 
-Sure! Once we have the IP addresses of the relays associated with malicious activity, we can use the Stem library to interact with Tor and programmatically add these relays to our Tor circuit blacklist. This will prevent future Tor circuits from including these relays and help mitigate potential threats.
+ Once we have the IP addresses of the relays associated with malicious activity, we can use the Stem library to interact with Tor and programmatically add these relays to our Tor circuit blacklist. This will prevent future Tor circuits from including these relays and help mitigate potential threats.
 
 Here's an example of how we can add relays to our circuit blacklist using Stem:
 
