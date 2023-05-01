@@ -10,7 +10,7 @@ from stem.control import Controller
 
 with Controller.from_port(port=9051) as controller:
     controller.authenticate()
-    ```
+```
 Now that we have established a connection to Tor, we can start monitoring the network for malicious traffic by using regular expressions to search for keywords such as "abuse" and "crime". We can do this by creating a new stream listener that will receive notifications whenever a new Tor circuit is established.
 
 ```python
