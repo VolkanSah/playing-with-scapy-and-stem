@@ -1,6 +1,6 @@
 # playing with scapy and stem
 ###### RedTeam Script Examples for EDU by Volkan Sah - simple codings
-no explanation to give malicious users no dangerous script in their hands
+no explanation to give malicious users no dangerous script in their hands, want help me please?
 ## the idea, it is only an idea for the head of a MasterCodein TerminalApp
 ```python
 from scapy.all import *
