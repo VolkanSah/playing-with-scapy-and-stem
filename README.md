@@ -26,7 +26,7 @@ class MaliciousTrafficListener(StreamListener):
         ip_src = pkt[IP].src
         ip_dst = pkt[IP].dst
         print(f'Potential intruder detected: {ip_src} -> {ip_dst}')
-    # contoller:  keywords
+    # contoller:  keywords e.g abuse, crime...
     with Controller.from_port(port=9051) as controller:
     controller.authenticate()
     controller.add_event_listener(MaliciousTrafficListener(["abuse", "crime"]))
