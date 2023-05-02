@@ -47,7 +47,7 @@ class MaliciousTrafficListener(StreamListener):
         if hop.fingerprint in malicious_relays:
             controller.set_conf(f"ExcludeExitNodes {hop.fingerprint}")
 ```
-### Idea by 
+### Idea by, still yet
 - [VolkanSah on Github](https://github.com/volkansah)
 - [Developer Site](https://volkansah.github.io)
 - [Become a 'Sponsor'](https://github.com/sponsors/volkansah)
