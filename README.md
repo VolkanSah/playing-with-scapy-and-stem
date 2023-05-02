@@ -21,11 +21,11 @@ class MaliciousTrafficListener(StreamListener):
         if any(re.search(keyword, stream.target_host) for keyword in self.keywords):
             print(f"Malicious traffic detected to {stream.target_host}")
    #  extract destination IP from user of the evil onion
-    def check_destination(pkt):
-    if IP in pkt:
-        ip_src = pkt[IP].src
-        ip_dst = pkt[IP].dst
-        print(f'Potential intruder detected: {ip_src} -> {ip_dst}')
+    #def check_destination(pkt):
+   # if IP in pkt:
+      #  ip_src = pkt[IP].src
+      #  ip_dst = pkt[IP].dst
+      #  print(f'Potential intruder detected: {ip_src} -> {ip_dst}')
     # contoller:  keywords e.g abuse, crime...
     with Controller.from_port(port=9051) as controller:
     controller.authenticate()
