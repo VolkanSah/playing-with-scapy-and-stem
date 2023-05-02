@@ -1,4 +1,5 @@
 # playing with scapy and stem
+###### RedTeam Script Examples for EDU by Volkan Sah - simple codings
 ## the idea
 ```python
 from scapy.all import *
