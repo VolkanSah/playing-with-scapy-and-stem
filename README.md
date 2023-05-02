@@ -1,4 +1,5 @@
 # playing-with-scapy-and-stem
+## the idea
 ```python
 from scapy.all import *
 import csv
