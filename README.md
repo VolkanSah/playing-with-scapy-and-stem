@@ -23,7 +23,7 @@ class MaliciousTrafficListener(StreamListener):
     def stream_new(self, stream):
         if any(re.search(keyword, stream.target_host) for keyword in self.keywords):
             print(f"Malicious traffic detected to {stream.target_host}")
-   #  extract destination IP from user of the evil onion
+   #  extract destination IP from user of the evil 
     #def check_destination(pkt):
    # if IP in pkt:
       #  ip_src = pkt[IP].src
