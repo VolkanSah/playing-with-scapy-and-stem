@@ -1,4 +1,4 @@
-# playing-with-scapy-and-stem
+# playing with scapy and stem
 ## the idea
 ```python
 from scapy.all import *
