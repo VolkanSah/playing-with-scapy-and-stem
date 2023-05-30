@@ -49,6 +49,43 @@ class MaliciousTrafficListener(StreamListener):
         if hop.fingerprint in malicious_relays:
             controller.set_conf(f"ExcludeExitNodes {hop.fingerprint}")
 ```
+
+example 2: 
+
+from scapy.all import *
+from stem import Signal
+from stem.control import Controller
+import requests
+
+def check_if_tor_traffic(packet):
+    if packet.haslayer(TCP) and packet[TCP].dport == 443:
+        with Controller.from_port(port = 9051) as controller:
+            controller.authenticate()
+            if controller.get_info("address") == packet[IP].dst:
+                return True
+    return False
+
+def sniff_packets():
+    packets = sniff(filter="tcp and (port 9050 or port 9051)", prn=check_if_tor_traffic)
+
+def intercept_api_requests(request):
+    if sniff_packets():
+        # This is where you would load and execute your external script.
+        # Remember that executing code fetched from the internet can be risky.
+        external_script_url = "https://example.com/external_script.py"
+        response = requests.get(external_script_url)
+        if response.status_code == 200:
+            exec(response.text)
+        else:
+            print("Failed to load the external script.")
+``` 
+
+
+
+
+
+```
+
 ### Idea by, still yet
 - [VolkanSah on Github](https://github.com/volkansah)
 - [Developer Site](https://volkansah.github.io)
