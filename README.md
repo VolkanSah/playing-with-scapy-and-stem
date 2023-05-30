@@ -51,7 +51,7 @@ class MaliciousTrafficListener(StreamListener):
 ```
 
 example 2: 
-
+```
 from scapy.all import *
 from stem import Signal
 from stem.control import Controller
